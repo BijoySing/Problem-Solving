@@ -11,83 +11,46 @@ typedef long long ll;
 //#define int long long
 #define ii int
 #define ck(x) cerr << #x << " = " << x << endl;
-/**
-        regex b("((aa)|(aaa)|(bb)|(bbb))*");
-        cout<<(regex_match(s,b)?"YES\n":"NO\n");
-
-                if(s=="YES" || s=="yES" || s=="yes" || s=="Yes" ||s=="YeS" || s=="YEs" || s=="yEs"|| s=="yeS")
-        {
-            yes;
-        }
-        else no;
-    }
-    */
+const int N = 10001+10;
+vector<int> g[N];
+int ind[N];
 int main()
 {
+    int n,m,t;
+    //map<int,vector<int>>mp;
 
-    int n;
-    cin >> n;
-    int k=0;
+    vector<int> ans;
+
+
+    cin>>n>>m;
+    for(int i=0; i<m; i++)
+    {
+        int x,y;
+        cin>>x>>y;
+    g[x].push_back(y);
+        ind[y]++;
+    }
+    priority_queue<int,vector<int>,greater<int>>q;
     for(int i=1; i<=n; i++)
     {
-        map<string,vector<string>>mp;
-        map<string,int>ind;
-        int m;
-        cin>>m;
-        vector<string> ans;
-        for(int j=1; j<m; j++)
+        if(ind[i]==0)
         {
-
-            string x,y;
-            cin >> x >> y;
-            mp[x].push_back(y);
-            ind[y]++;
+            q.push(i);
         }
-
-        priority_queue<string, vector<string>, greater<string> > q;
-
-        for(auto [x,y] : mp)
+    }
+    while(q.size()!=0)
+    {
+        int u=q.top();
+        ans.push_back(u);
+        q.pop();
+        for(auto i:g[u])
         {
-            if( ind[x]==0)
-            {
-                q.push(x);
-            }
+            ind[i]--;
+            if(ind[i]==0)q.push(i);
         }
+    }
+    for(auto u:ans)cout<<u<<" ";
 
-        while(q.size()!=0)
-        {
-            string u = q.top();
-            ans.push_back(u);
-            q.pop();
 
-            for(auto v : mp[u])
-            {
-                ind[v]--;
-                if(ind[v]==0)
-                {
-                    q.push(v);
-                    //    ans.push_back(v);
-
-                }
-            }
-        }
-
-    cout<<"Scenario #"<<++k<<":"<<endl;;
-
-    for(auto u : ans )
-        cout << u <<endl;;
-    cout << endl;}
 
 }
-
-/**
-
-2
-4
-SwimmingPool OldTree
-BirdsNest Garage
-Garage SwimmingPool
-3
-Toilet Hospital
-VideoGame Toilet
-*/
