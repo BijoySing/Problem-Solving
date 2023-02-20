@@ -8,12 +8,13 @@ using namespace std;
 #define int  long long
 #define pb(kharrtarrm) push_back(kharrtarrm);
 #define ck(kharrtarrm) cerr << #kharrtarrm << " = " << kharrtarrm << endl;
-const int N=1e3+5;
-int dp[N][N];
+const int N=1e4+5;
+int dp[N];
 int coinChange(int amount, vector<int>&coin)
 {
 
     if(amount==0)return 0;
+    if(dp[amount]!=-1)return dp[amount];
     int ans=INT_MAX;
 
     for(int m:coin)
@@ -24,10 +25,12 @@ int coinChange(int amount, vector<int>&coin)
            // ck(ans);
         }
     }
-    return ans;
+    return dp[amount]=ans;
 }
-int solve(int n,vector<int>&v)
+int solve(vector<int>&v,int n)
 {
+        memset(dp,-1,sizeof(dp));
+
     int ans=coinChange(n,v);
 
     if(ans==INT_MAX)return -1;
@@ -51,7 +54,7 @@ int32_t main()
             cin>>a[i];
            v.push_back(a[i]);
         }*/
-        cout<< solve(n,v)<<endl;;
+        cout<< solve(v,n)<<endl;;
 
 
     }
