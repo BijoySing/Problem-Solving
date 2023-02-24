@@ -10,14 +10,15 @@ using namespace std;
 const int N=1000000000000L;
 int wt[105],val[105];
 int dp[105][100005];
-int knapsack(int ind,int wt_left)
+int knapsack(int ind,int val_left)
 {
 
-    if(wt_left==0 || ind<0)return 0;
-    if(dp[ind][wt_left]!=-1)return dp[ind][wt_left];
-    int ans=knapsack(ind-1,wt_left);
-    if(wt_left-wt[ind]>=0)ans=max(ans,knapsack(ind-1,wt_left-wt[ind])+val[ind]);
-    return dp[ind][wt_left]=ans;
+    if(val_left==0)return 0;
+    if(ind<0)return 1e15;
+    if(dp[ind][val_left]!=-1)return dp[ind][val_left];
+    int ans=knapsack(ind-1,val_left);
+    if(val_left-val[ind]>=0)ans=min(ans,knapsack(ind-1,val_left-val[ind])+wt[ind]);
+    return dp[ind][val_left]=ans;
 }
 int32_t main()
 {
@@ -33,7 +34,16 @@ int32_t main()
         {
             cin>>wt[i]>>val[i];
         }
-        cout<<knapsack(n-1,w)<<endl;;
+        int mx=1e5;
+        for(int i=mx; i>=0; i--)
+        {
 
+            if(knapsack(n-1,i)<=w)
+            {
+                cout<<i<<endl;
+                break;
+            }
+
+        }
     }
 }
