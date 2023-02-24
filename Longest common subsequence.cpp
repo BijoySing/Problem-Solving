@@ -34,9 +34,9 @@ int32_t main()
         cin>>a[i];
     }
     int ans=0;
-   // /for(int i=0; i<n; i++)
+   for(int i=0; i<n; i++)
     {
-        ans=max(ans,lis(3));
+        ans=max(ans,lis(i));
 
     }
     cout<<ans<<endl;
