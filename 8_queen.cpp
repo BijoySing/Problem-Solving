@@ -2,6 +2,7 @@
 using namespace std;
 const int N = 8;
 int step=0;
+int sz=0;
 void printBoard(const vector<int>& board) {
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
@@ -13,6 +14,7 @@ void printBoard(const vector<int>& board) {
         cout << endl;
     }
     cout << endl;
+    sz++;
 }
 
 int cal_conflicts(const vector<int>& board) {
@@ -36,7 +38,6 @@ void solveQueens() {
     }
 
     int cur_conflict = cal_conflicts(board);
-
     cout << "inital state:=" << endl<< " " << " heuristic value is : " << cur_conflict << "):" << endl;
     //cout << "starting state (Heuristic value: " << cur_conflict << "):" << endl;
     printBoard(board);
@@ -79,6 +80,7 @@ void solveQueens() {
 
     cout << "Solution found:" << endl;
     printBoard(board);
+    cout<<"total = "<<sz<<endl;
 }
 
 int main() {

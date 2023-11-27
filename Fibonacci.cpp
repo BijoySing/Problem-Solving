@@ -5,12 +5,14 @@ using namespace std;
 #define no cout<<"No\n"
 #define pp(khartarm) cout << khartarm <<endl
 #define int  long long
-#define pb(khartarm) push_back(khartarm);
+// #define pb(khartarm) push_back(khartarm);
 #define ck(khartarm) cerr << #khartarm << " = " << khartarm << endl;
+#define pp(khartarm) cout << #khartarm << " = " << khartarm << endl;
 const int N=1e5;
 int dp[N];
 int fib(int n)
 {
+    pp(n);
     if(n==0)return 0;
     if(n==1)return 1;
     if(dp[n]!=-1)return dp[n];
