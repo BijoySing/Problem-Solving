@@ -14,26 +14,21 @@ typedef long long int ll;
 int32_t main()
 {
     // Your code here
-int n;
-cin>>n;
-int a[n];
-for (size_t i = 0; i < n; i++)
+string s;
+cin>>s;
+int a[26]={0};
+// sort(s.begin(),s.end());
+for (int i = 0; i < s.size(); i++)
 {
     /* code */
-    cin>>a[i];
+    a[s[i]-'a']++;
 }
-int c=0;
-for (size_t i = 0; i < n; i++)
+for (int i = 0; i < 26; i++)
 {
-    for (size_t j = 0; j < n; j++)
-    {
-        /* code */
-            if(a[i]+1==a[j] and a[i])c++;
-
+    /* code */
+    if(a[i]!=0){
+        cout<<char(i+97)<<" : "<<a[i]<<endl;
     }
-    
-    /* code */
 }
-cout<<c<<endl;
 
 }

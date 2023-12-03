@@ -16,12 +16,12 @@ int32_t main()
     // Your code here
     // cout << "hi";
     int n, q;
-    cin >> n >> q;
+    cin >> n;
     int a[n];
     int s[n+5];
     int x = 0;
     s[0]=0;
-    for (size_t i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
         /* code */
         
@@ -30,11 +30,12 @@ int32_t main()
         s[i+1]=x;
         // ck(s[i]);
     }
-    for (size_t i = 0; i < q; i++)
+    
+    for (int i = n; i >0; i--)
     {
         /* code */
-        int l, r;
-        cin >> l >> r;
-        cout << s[r] - s[l-1] << endl;
+        
+        cout<<s[i]<<" ";
+       
     }
 }
