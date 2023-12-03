@@ -3,4 +3,4 @@ output.txt
 cpp
 build
 .vscode
-.exe
+*.exe
