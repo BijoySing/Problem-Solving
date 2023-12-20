@@ -1,19 +1,43 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long int ll;
-#define yes cout << "YES\n"
-#define no cout << "NO\n"
-#define pp(x) cout << x << endl
-#define int long long
-#define Int int
-#define ck(x) cout << #x << " = " << x << endl;
-int32_t main()
+#include <iostream>
+#include <string>
+
+std::string generateUsername(const std::string &s)
 {
-    int t = 1;
-    while (t--) {
-        for(int i = 0; i <100 ; i++) {
-            // Your code here
-            ck(i);
+    std::string username = "";
+    bool numericPartFound = false;
+
+    for (int i = 0; i < s.size(); ++i)
+    {
+        if (isdigit(s[i] ))
+        {
+            numericPartFound = true;
+            username += s[i];
+        }
+        else if (numericPartFound)
+        {
+            break;
+        }
+        else
+        {
+            username += s[i];
         }
     }
+
+    return username;
+}
+
+int main()
+{
+    int t;
+    std::cin >> t;
+
+    while (t--)
+    {
+        std::string s;
+        std::cin >> s;
+        std::string username = generateUsername(s);
+        std::cout << username << std::endl;
+    }
+
+    return 0;
 }
