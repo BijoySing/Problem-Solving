@@ -20,16 +20,30 @@ public:
 };
 void print_linked_list(Node *head)
 {
-    cout << endl;
-    cout << "Your Linked List: ";
+    bool p = false;
     Node *tmp = head;
-    while (tmp != NULL)
+    int sz = 0;
+    for (Node *tmp = head; tmp != nullptr; tmp = tmp->next)
     {
-        cout << tmp->val << " ";
-        tmp = tmp->next;
+        sz++;
     }
-    cout << endl
-         << endl;
+    if (sz % 2)
+    {
+
+        for (int i = 0; i < sz/2; i++)
+        {
+            tmp = tmp->next;
+        }
+        cout<<tmp->val<<endl;
+    }
+    else{
+        for (int i = 0; i < (sz/2)-1; i++)
+        {
+            tmp = tmp->next;
+        }
+        cout<<tmp->val<<endl;
+        cout<<tmp->next->val<<endl;
+    }
 }
 void insert_at_tail(Node *&head, int v)
 {

@@ -28,7 +28,6 @@ void insert_at_tail(Node *&head, int v)
     {
         tmp = tmp->next;
     }
-    // tmp ekhon last node e
     tmp->next = newNode;
     cout << endl
          << "Inserted at tail" << endl
