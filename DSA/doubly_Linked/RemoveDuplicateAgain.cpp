@@ -33,6 +33,8 @@ int32_t main()
             break;
         myList.push_back(val);
     }
+    myList.sort();
+    myList.unique();
     for (auto u : myList)
         cout << u << " ";
 }
