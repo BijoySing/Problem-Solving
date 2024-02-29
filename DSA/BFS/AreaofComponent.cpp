@@ -18,8 +18,10 @@ bool valid(int x, int y)
 {
     return !vis[x][y] && g[x][y] != -1 && x >= 0 && x < n && y >= 0 && y < m;
 }
-void bfs(pair<int, int> st)
+int bfs(pair<int, int> st)
 {
+    int area=0;
+
     queue<pair<int, int>> q;
     q.push(st);
     vis[st.first][st.second] = true;
@@ -28,7 +30,10 @@ void bfs(pair<int, int> st)
         auto par = q.front(); /* code */
         q.pop();
         int x = par.first;
+        
         int y = par.second;
+        area++;
+        // cout<<x<<y<<" ";
         for (int i = 0; i < 4; i++)
         {
             int a = x + dx[i];
@@ -40,34 +45,47 @@ void bfs(pair<int, int> st)
             }
         }
     }
+    return area;
 }
 int32_t main()
 {
     int t = 1;
     pair<int, int> st, dt;
-
+    vector<pair<int, int>> nodes;
     while (t--)
     {
         cin >> n >> m;
+        int node = 0;
         for (int i = 0; i < n; i++)
         {
-            // Your code here\=
             string s;
             cin >> s;
             for (int j = 0; j < m; j++)
             {
-                if (s[j] == '#')
+                if (s[j] == '-')
                     g[i][j] = -1;
-                if (s[j] == 'A')
-                    st = {i, j};
-                if (s[j] == 'B')
-                    dt = {i, j};
+                else
+                {
+                    nodes.push_back({i, j});
+                    node++;
+                }
             }
         }
-        bfs(st);
-        if (vis[dt.first][dt.second])
-            cout << "YES" << endl;
-        else
-            cout << "NO" << endl;
+        int c = 0;
+        int mn=INT_MAX;
+        for (int i = 0; i < node; i++)
+        {
+            if (!vis[nodes[i].first][nodes[i].second])
+            {
+                // cout<<endl;
+                int ans=bfs(nodes[i]);
+                mn=min(ans,mn);
+            
+                c++;
+            }
+        }
+      if(mn<INT_MAX)cout<<mn<<endl;
+      else cout<<-1<<endl;
+
     }
 }
