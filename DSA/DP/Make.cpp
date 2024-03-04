@@ -13,13 +13,22 @@ const int maxW = 1000;
 ll dp[maxN][maxW];
 bool make(int cur, ll n)
 {
-    if (n == cur)
+    priority_queue<int> q;
+    q.push(cur);
+    if (cur == n)
         return true;
-    if (n < cur)
-        return false;
-    else
+    while (!q.empty())
     {
-        dp[n] = n * 2;
+        int a = q.top() * 2;
+        int b = q.top() + 3;
+        q.pop();
+        q.push(a);
+        q.push(b);
+        if (a == n || b == n)
+            return true;
+        if (a > n and b > n){
+            return false;
+        }
     }
 }
 int32_t main()
@@ -37,6 +46,5 @@ int32_t main()
         else
             no;
 
-        // cout << make(1) << endl;
     }
 }
