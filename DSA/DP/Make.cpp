@@ -11,25 +11,15 @@ const int N = 1e5 + 5;
 const int maxN = 1000;
 const int maxW = 1000;
 ll dp[maxN][maxW];
-bool make(int cur, ll n)
+bool make(int cur, int n)
 {
-    priority_queue<int> q;
-    q.push(cur);
+    // ck(cur);
     if (cur == n)
         return true;
-    while (!q.empty())
-    {
-        int a = q.top() * 2;
-        int b = q.top() + 3;
-        q.pop();
-        q.push(a);
-        q.push(b);
-        if (a == n || b == n)
-            return true;
-        if (a > n and b > n){
-            return false;
-        }
-    }
+    if (cur > n)
+        return false;
+    cur = make(2 * cur, n);
+    cur = make(3 + cur, n);
 }
 int32_t main()
 {
@@ -45,6 +35,5 @@ int32_t main()
             yes;
         else
             no;
-
     }
 }
