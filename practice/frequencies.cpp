@@ -7,31 +7,22 @@ typedef long long int ll;
 #define int long long
 #define Int int
 #define ck(x) cout << #x << " = " << x << endl;
-class myStack
-{
-private:
-    /* data */
-public:
-   vector<int>v;
-void push(int x){
-    v.push_back(x);
-}
-void pop(int x){
-    v.pop_back(x);
-}
-
-};
-
-
-
-
-
+const int N = 1e5 + 5;
 int32_t main()
 {
     int t = 1;
+    // cin >> t;
     while (t--)
     {
-        
+        int n;
+        string s;
+        cin >> n ;
+        int a[n];
+        for (int i = 0; i < n; i++)
+        {
+          cin>>a[i];
+        }
+        sort(a,a+n);
+        cout << a[0]+a[1] << endl;
     }
-    return 0;
 }

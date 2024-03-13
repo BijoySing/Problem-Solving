@@ -1,1 +1,1 @@
-                adj[i][j] = INT_MAX;
+    //   cout << u << " " << v << " " << w << endl;

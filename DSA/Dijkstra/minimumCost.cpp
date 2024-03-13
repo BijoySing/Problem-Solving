@@ -1,27 +1,27 @@
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long int ll;
 #define yes cout << "YES\n"
 #define no cout << "NO\n"
 #define pp(x) cout << x << endl
-#define int long long int
-#define Int int
+typedef long long ll ;
+// #define ll long long ll
+// #define ll ll
 #define ck(x) cout << #x << " = " << x << endl;
-const int N = 1e6+5;
+const int N = 1e5+5;
 bool vis[N];
-vector<pair<int, int>> v[N];
-int dist[N];
+vector<pair<ll, ll>> v[N];
+ll dist[N];
 class cmp
 {
 public:
-    bool operator()(pair<int, int> a, pair<int, int> b)
+    bool operator()(pair<ll, ll> a, pair<ll, ll> b)
     {
         return a.second > b.second;
     }
 };
-void dijkstra(int src)
+void dijkstra(ll src)
 {
-    priority_queue<pair<int, int>, vector<pair<int, int>>, cmp> q;
+    priority_queue<pair<ll, ll>, vector<pair<ll, ll>>, cmp> q;
     q.push({src, 0});
     // cout << src << endl;
     vis[src] = true;
@@ -31,51 +31,52 @@ void dijkstra(int src)
         /* code */
         auto par = q.top();
         q.pop();
-        int node = par.first;
-        int cost = par.second;
+        ll node = par.first;
+        ll cost = par.second;
         for (auto u : v[node])
         {
-            int childCost = u.second;
-            int childNode = u.first;
+            ll childCost = u.second;
+            ll childNode = u.first;
             // cout << childNode << " " << childCost << endl;
 
             if (cost + childCost < dist[childNode])
             {
                 dist[childNode] = cost + childCost;
-                q.push({childNode, childCost});
+                q.push({childNode, dist[childNode]});
             }
         }
     }
 }
-int32_t main()
+int main()
 {
-    int n, e;
+    ll n, e;
     cin >> n >> e;
 
-    for (int i = 0; i < e; i++)
+    for (ll i = 1; i <= e; i++)
     {
         // Your code here
-        int x, y, w;
+        ll x, y, w;
         cin >> x >> y >> w;
         v[x].push_back({y, w});
-        v[y].push_back({x, w});
+        // v[y].push_back({x, w});
     }
-    for (int i = 1; i <= n; i++)
+    for (ll i = 0; i <N; i++)
     {
         // Your code here
         dist[i] = LLONG_MAX;
     }
-    int ss;
+    // memset(vis,false,sizeof(vis));
+    ll ss;
     cin >> ss;
     dijkstra(ss);
-    int q;
+    ll q;
     cin >> q;
     while (q--)
     {
-        int ind, cost;
-        cin >> ind >> cost;
+        ll d, dw;
+        cin >> d >> dw;
         // ck(dist[ind])
-        if(dist[ind]<=cost)yes;
+        if(dist[d]<=dw)yes;
         else no;
         /* code */
     }
