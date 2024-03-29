@@ -22,22 +22,26 @@ int32_t main()
     {
         int n;
         cin >> n;
-        int a[n+2];
+        int a[n + 2];
         for (int i = 0; i < n - 1; i++)
         {
             // Your code here
             cin >> a[i];
         }
-        sort(a, a + n);
-        int ans;
-        for (int i = 0; i <= n; i++)
+        sort(a, a + n - 1);
+        int ans = -1;
+        for (int i = 0; i < n - 1; i++)
         {
-            ck(a[i]);
-            if (i+1 != a[i])
+            // cout<<a[i]<<" ";
+            if (i + 1 != a[i])
             {
-                ans = a[i];
+                ans = i;
                 break;
             }
         }
-        cout<<ans<<endl;
-    }}
+        if (ans!=-1)
+            cout << ans + 1 << endl;
+        else
+            cout << n << endl;
+    }
+}

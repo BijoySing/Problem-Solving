@@ -15,26 +15,25 @@ int32_t main()
     ios::sync_with_stdio(false);
     cin.tie(NULL);
     int t = 1;
-    cin >> t;
+    // cin >> t;
     while (t--)
     {
-        int n, l;
-        cin >> n >> l;
-        if (l > 1e6)
+        int n, m;
+        cin >> n >> m;
+        vector<int>v;
+        for (int i = 0; i < n; i++)
         {
-            for (int i = 1; i <= n; i++)
-            {
-                cout << i << " ";
-            }
-            cout << endl;
+            int a;
+            cin >> a;
+            v.pb(a);
         }
-        else
+        for (int i = 0; i < m; i++)
         {
-            for (int i = 0; i < n; i++)
-            {
-                cout << l * (i + 1) << " ";
-            }
-            cout << endl;
+            int a;
+            cin >> a;
+            v.pb(a);
         }
+        sort(v.begin(),v.end());
+        for(auto u:v)cout<<u<<" ";
     }
 }
