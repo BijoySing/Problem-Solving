@@ -1,46 +1,45 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-//typedef long long int;
-#define yes cout<<"Yes\n"
-#define no cout<<"No\n"
-#define pp(kharrtarrm) cout << kharrtarrm <<endl
-#define int  long long
-#define pb(kharrtarrm) push_back(kharrtarrm);
-#define ck(kharrtarrm) cerr << #kharrtarrm << " = " << kharrtarrm << endl;
-const int N=1e5+5;
-int prime[N];
-void sieve(int n)
+
+typedef long long  ll;
+#define yes cout << "YES\n"
+#define no cout << "NO\n"
+#define pp(x) cout << x << "\n"
+// #define int long long int
+#define ck(x) cout << #x << " = " << x << "\n"
+#define endl "\n"
+#define pb(x) push_back(x)
+
+int main()
 {
-    memset(prime,0,sizeof(prime));
-    for(int i=2; i*i<=n; i++)
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int t = 1;
+    // cin >> t;
+    while (t--)
     {
-        if(prime[i]==0)
+        int n, q;
+                unordered_map<int, int> mp;
+
+        cin >> n >> q;
+        vector<int> v;
+        for (int i = 0; i < n; i++)
         {
-            for(int j=i*i; j<=n; j+=i)
-            {
-                prime[j]=1;
-            }
+            int x;
+            cin >> x;
+            v.push_back(x);
+            mp[x] = i + 1;
+        }
+        while (q--)
+        {
+            int l, r, x;
+            cin >> l >> r >> x;
+            // cout<<mp[x]<<endl;
+            if (mp[x] >= l and mp[x] <= r)
+                yes;
+            else
+                no;
         }
     }
-    for(int i=2; i<=n; i++)
-    {
-        if(!prime[i])
-            cout<<i<<"-";
-    }
-    cout<<endl;
 }
-int32_t main()
-{
-    int t;
-    cin>>t;
-    while(t--)
-    {
-
-        int n;
-        cin>>n;
-        sieve(n);
-
-    }
-    return 0;
-}
-

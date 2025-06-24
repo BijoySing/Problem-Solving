@@ -1,1 +1,1 @@
-    cin >> t;
+        // Counting the number of transitions
